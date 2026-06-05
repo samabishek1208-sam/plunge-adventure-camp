@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plunge Adventure Camp</title>
+<style>
+  *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+:root{
+--bg:#f8f5ed;
+--yellow:#f5c400;
+--dark:#111111;
+--text:#555555;
+--white:#ffffff;
+}
+
+body{
+background:var(--bg);
+color:var(--dark);
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+}
+
+ul{
+list-style:none;
+}
+
+/* NAVBAR */
+
+header{
+position:sticky;
+top:0;
+z-index:999;
+background:var(--bg);
+border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.navbar{
+max-width:1400px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:120px;
+}
+
+.logo h2{
+font-size:1.8rem;
+font-weight:700;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+}
+
+.nav-links a{
+color:#555;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover,
+.active{
+color:var(--dark);
+border-bottom:3px solid var(--yellow);
+padding-bottom:8px;
+}
+
+.register-btn{
+background:var(--yellow);
+color:black;
+padding:15px 30px;
+border-radius:12px;
+font-weight:700;
+transition:.3s;
+box-shadow:0 10px 20px rgba(245,196,0,.2);
+}
+
+.register-btn:hover{
+transform:translateY(-3px);
+}
+
+/* HERO */
+/* HERO */
+
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.bg-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:1;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+z-index:2;
+}
+
+.hero-content{
+position:relative;
+z-index:3;
+color:white;
+max-width:800px;
+}
+
+.hero-content h1{
+font-size:6rem;
+font-weight:800;
+}
+
+.hero-content span{
+color:#f5c400;
+}
+
+/* SECTION */
+.primary-btn{
+background:var(--yellow);
+color:black;
+padding:16px 30px;
+border-radius:12px;
+font-weight:700;
+display:inline-block;
+transition:.3s;
+}
+
+.primary-btn:hover{
+transform:translateY(-4px);
+}
+
+.secondary-btn{
+border:2px solid var(--yellow);
+padding:16px 30px;
+border-radius:12px;
+color:black;
+font-weight:600;
+}
+
+.hero-right video{
+width:100%;
+height:600px;
+object-fit:cover;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+/* SECTION */
+
+.section-title{
+text-align:center;
+font-size:4rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.section-subtitle{
+max-width:900px;
+margin:auto;
+text-align:center;
+color:var(--text);
+font-size:1.2rem;
+line-height:1.8;
+margin-bottom:70px;
+}
+
+/* EVENT */
+
+.event-section{
+padding:120px 40px;
+max-width:1400px;
+margin:auto;
+}
+
+.event-card{
+background:white;
+border-radius:30px;
+overflow:hidden;
+display:grid;
+grid-template-columns:2fr 1fr;
+box-shadow:0 15px 40px rgba(0,0,0,.05);
+}
+
+.event-left{
+padding:60px;
+}
+
+.badge{
+display:inline-block;
+background:#fff6d8;
+padding:10px 18px;
+border-radius:30px;
+color:#c49a00;
+font-weight:600;
+margin-bottom:30px;
+}
+
+.event-left h2{
+font-size:3rem;
+margin-bottom:25px;
+}
+
+.event-left p{
+font-size:1.2rem;
+line-height:1.8;
+color:var(--text);
+}
+
+.event-left h3{
+margin-top:40px;
+margin-bottom:25px;
+}
+
+.includes{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.include-item{
+background:#fafafa;
+padding:20px;
+border-radius:15px;
+font-weight:500;
+}
+
+.event-right{
+padding:60px;
+background:#fcfcfc;
+}
+
+.fee-title{
+letter-spacing:2px;
+color:#666;
+}
+
+.price{
+font-size:5rem;
+font-weight:800;
+color:var(--yellow);
+margin:15px 0;
+}
+
+.fee-text{
+color:#777;
+margin-bottom:30px;
+}
+
+.event-date{
+font-size:1.3rem;
+font-weight:600;
+margin:35px 0;
+}
+
+.full-btn{
+width:100%;
+text-align:center;
+}
+
+/* DIFFERENT */
+
+.different{
+padding:120px 40px;
+text-align:center;
+}
+
+.different h2{
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.different p{
+color:var(--text);
+font-size:1.2rem;
+}
+
+.different-grid{
+max-width:1400px;
+margin:80px auto 0;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+}
+
+.different-card{
+padding:30px;
+}
+
+.icon-box{
+width:90px;
+height:90px;
+margin:auto;
+border-radius:25px;
+background:#fff6d8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:2rem;
+margin-bottom:25px;
+}
+
+.different-card h3{
+font-size:2rem;
+margin-bottom:15px;
+}
+
+.different-card p{
+line-height:1.8;
+}
+
+/* RESET */
+
+.reset-section{
+max-width:1400px;
+margin:auto;
+padding:120px 40px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.reset-image img{
+width:100%;
+border-radius:25px;
+background:white;
+padding:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.06);
+}
+
+.reset-content h2{
+font-size:4rem;
+margin-bottom:25px;
+}
+
+.reset-content p{
+font-size:1.15rem;
+line-height:2;
+margin-bottom:25px;
+color:var(--text);
+}
+
+
+/* FOOTER */
+
+footer{
+background:#efebe1;
+margin-top:100px;
+padding:80px 40px;
+}
+
+.footer-grid{
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:60px;
+}
+
+.footer-logo{
+width:150px;
+margin-bottom:20px;
+}
+
+.footer-grid p{
+color:#666;
+line-height:2;
+}
+
+.footer-grid h3{
+margin-bottom:20px;
+}
+
+.footer-grid li{
+margin-bottom:12px;
+}
+
+.footer-grid a{
+color:#666;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.hero,
+.reset-section,
+.event-card{
+grid-template-columns:1fr;
+}
+
+.different-grid{
+grid-template-columns:1fr 1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+.hero-left h1{
+font-size:3rem;
+}
+
+.section-title,
+.different h2,
+.reset-content h2{
+font-size:2.5rem;
+}
+
+
+}
+
+@media(max-width:700px){
+
+.different-grid{
+grid-template-columns:1fr;
+}
+
+.includes{
+grid-template-columns:1fr;
+}
+
+.footer-grid{
+grid-template-columns:1fr;
+}
+
+.hero{
+position:relative;
+height:700px;
+border:10px solid red;
+}
+
+.bg-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:1;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+z-index:2;
+}
+
+.hero-content{
+position:relative;
+z-index:3;
+color:white;
+max-width:800px;
+}
+
+.hero-content h1{
+font-size:6rem;
+font-weight:800;
+}
+
+.hero-content span{
+color:#f5c400;
+}
+
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<img src="logo.png.png" alt="logo">
+
+<h2>Plunge Adventure Camp</h2>
+
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html" class="active">Home</a></li>
+
+<li><a href="activities.html">Activities</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="events.html">Events</a></li>
+
+<li><a href="testimonials.html">Testimonials</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+<a href="https://forms.gle/DrwZxWbhLuFZMXtP8"
+target="_blank"
+class="register-btn">
+Register Now
+</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+<video class="bg-video" autoplay muted loop playsinline controls>
+<source src="hero.mp4.mp4" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<h1>BREAK THE<br><span>PATTERN.</span></h1>
+
+<h2>LIVE TRANSFORMED.</h2>
+
+<p>
+Because you were not made to blend in —
+you were made to stand out.
+</p>
+
+<a href="https://forms.gle/DrwZxWbhLuFZMXtP8"
+target="_blank"
+class="primary-btn">
+Register Now
+</a>
+
+</div>
+
+</section>
+
+<!-- FEATURED EVENT -->
+
+<section class="event-section">
+
+<h2 class="section-title">
+Featured Camp Event
+</h2>
+
+<p class="section-subtitle">
+
+Secure your spot for our premier 2026 session.
+Experience three days of growth,
+thrilling adventure and lifelong memories.
+
+</p>
+
+<div class="event-card">
+
+<div class="event-left">
+
+<div class="badge">
+Registration Open
+</div>
+
+<h2>
+Plunge Adventure Camp 2026
+</h2>
+
+<p>
+
+A transformative 3-day adventure camp experience
+designed to rewire your purpose and build
+unbreakable team bonds through challenging outdoor activities.
+
+</p>
+
+<h3>What's Included</h3>
+
+<div class="includes">
+
+<div class="include-item">
+All Adventure Activities
+</div>
+
+<div class="include-item">
+Nutritious Meals
+</div>
+
+<div class="include-item">
+Accommodation
+</div>
+
+<div class="include-item">
+Training Materials
+</div>
+
+</div>
+
+</div>
+
+<div class="event-right">
+
+<p class="fee-title">
+REGISTRATION FEE
+</p>
+
+<h1 class="price">
+₹3800
+</h1>
+
+<p class="fee-text">
+All-inclusive per camper
+</p>
+
+<hr>
+
+<div class="event-date">
+
+October 23–25, 2026
+
+</div>
+
+<a href="https://forms.gle/DrwZxWbhLuFZMXtP8"
+target="_blank"
+class="primary-btn full-btn">
+
+Register Now
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WHAT MAKES US DIFFERENT -->
+
+<section class="different">
+
+<h2>
+What makes us different
+</h2>
+
+<p>
+More than just adventure —
+a journey of transformation and purpose
+</p>
+
+<div class="different-grid">
+
+<div class="different-card">
+
+<div class="icon-box">⛰️</div>
+
+<h3>Epic Adventures</h3>
+
+<p>
+Challenge yourself through zipline,
+rafting, climbing and wilderness exploration.
+</p>
+
+</div>
+
+<div class="different-card">
+
+<div class="icon-box">👥</div>
+
+<h3>Community</h3>
+
+<p>
+Build lasting friendships
+and grow together in a supportive environment.
+</p>
+
+</div>
+
+<div class="different-card">
+
+<div class="icon-box">❤️</div>
+
+<h3>Spiritual Growth</h3>
+
+<p>
+Discover purpose and renewal
+through faith-centered experiences.
+</p>
+
+</div>
+
+<div class="different-card">
+
+<div class="icon-box">⚡</div>
+
+<h3>Transformation</h3>
+
+<p>
+Leave transformed,
+equipped with confidence and renewed perspective.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RESET SECTION -->
+
+<section class="reset-section">
+
+<div class="reset-image">
+
+<img src="reset.png.png" alt="RESET">
+
+</div>
+
+<div class="reset-content">
+
+<h2>
+Experience Transformation
+</h2>
+
+<p>
+
+At Plunge Adventure Camp,
+we believe that true adventure goes beyond physical challenges.
+
+Our programs are designed to push boundaries,
+build character and foster spiritual growth.
+
+</p>
+
+<p>
+
+Through carefully crafted experiences rooted in biblical principles,
+campers discover their purpose,
+develop leadership skills and form lifelong connections.
+
+</p>
+
+<a href="about.html"
+class="primary-btn">
+Learn More About Us
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<img src="logo.png.png" class="footer-logo">
+
+<p>
+
+Rewired for Purpose.
+Experience transformative adventures
+that challenge, inspire and renew.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+<li><a href="activities.html">Activities</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="events.html">Events</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<p>Instagram: @plungeadventurecamp</p>
+
+<p>WhatsApp Available</p>
+
+<p>Email: info@plungecamp.com</p>
+
+</div>
+
+</div>
+
+</footer>
+<script>
+window.addEventListener("scroll", () => {
+const header = document.querySelector("header");
+
+if(window.scrollY > 50){
+header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.08)";
+}else{
+header.style.boxShadow = "none";
+}
+});
+</script>
+</body>
+</html>
